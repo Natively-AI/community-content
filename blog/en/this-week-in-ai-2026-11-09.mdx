@@ -1,0 +1,81 @@
+---
+title: "Anthropic's $895B Bill, OpenAI Buys Pierre, Kimi K3.1 Pro"
+description: "AI news November 2026: Anthropic discloses $895B in compute commitments, OpenAI acquires Pierre for Codex, and Moonshot drops 2.8T Kimi K3.1 Pro weights."
+image: "https://storage.googleapis.com/lablab-static-eu/cms/LABLAB_Weekly_AI_News_NOV_02-09-2026_s0zhkyc36q0zif69nj8ww743.jpg"
+authorUsername: "hamza13525223081"
+---
+
+# Anthropic's $895B Bill, OpenAI Buys Pierre, Kimi K3.1 Pro
+
+*This Week in AI: November 2 to November 9, 2026*
+
+This week showed what happens when AI outgrows its old infrastructure. Anthropic put an $895 billion number on its future compute commitments just as voters and equity markets started pushing back on data center build-outs. Meanwhile, OpenAI bought its own Git platform to handle agent-written code, and Moonshot shipped an open-weight model so large it takes 16 GPUs just to load.
+
+## Key Takeaways
+
+- **Anthropic and chip stocks:** Anthropic's amended S-1 disclosed [$16.96 billion in Q3 revenue alongside $895.4 billion in long-term compute commitments](https://dealroom.co/news/168953-anthropic-s-amended-s-1-17b-in-q3-revenue-a-slide-back-to-an-operating-l/), right before chip stocks fell 12.3% on November 5. With frontier labs locked into massive fixed cloud bills, expect API discounts to slow down and minimum spend contracts to tighten.
+- **OpenAI:** Acquired Git startup [Pierre Computer Company](https://openai.com/index/openai-to-acquire-pierre/) to build version control directly into Codex, and shipped [ChatGPT Images 2.6](https://felloai.com/chatgpt-images-2-6/) with two new API tiers (`Flare` and `Sunburst`). If your team runs coding agents in parallel, prepare for source control and code review to move inside the agent harness.
+- **Moonshot AI and Tencent:** Moonshot published the 1.56 TB weights for [Kimi K3.1 Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) (2.8T parameters, 104B active), while Tencent launched the 770B-parameter [Hy4](https://www.scmp.com/tech/big-tech/article/3373227/tencent-unveils-hy4-open-weight-ai-race-deepseek-zai-alibaba-heats) with native computer use. You can now self-host frontier-grade coding and GUI agents, provided you budget for multi-node GPU clusters or aggressive quantization.
+- **Anthropic and Microsoft Security:** Anthropic released [FlashProve](https://www.anthropic.com/research/provable-inference) to cryptographically verify which model generated an output, days after Microsoft detailed a [backdoored Claude Code extension](https://www.microsoft.com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/) that hit 5,000 developers on Open VSX and Cursor. Pin your IDE extension versions and verify third-party model routers before sending production traffic.
+
+---
+
+## The $895 Billion Compute Tab
+
+### Anthropic updates its S-1 with $17B in quarterly revenue and $895B in commitments
+
+In an [amended S-1/A filing on November 2](https://dealroom.co/news/168953-anthropic-s-amended-s-1-17b-in-q3-revenue-a-slide-back-to-an-operating-l/) ahead of its planned Nasdaq listing under the ticker `ANT`, Anthropic reported $16.96 billion in third-quarter revenue, up 1,127% year over year. That brings revenue for the first nine months of 2026 to $33.24 billion. The filing also revealed $895.4 billion in total purchase and lease commitments across Amazon, Google, Broadcom, and SpaceX's AI unit to lock in future compute capacity. Revenue is scaling fast, but nearly a trillion dollars in contracted infrastructure means Anthropic has very little room to start a price war.
+
+### Chip stocks drop 12% as US midterm voters push back on data centers
+
+Following the November 3 US midterm elections, semiconductor indexes [dropped 12.3% on November 5](https://kingy.ai/blog/ai-stock-selloff-november-2026/) as investors digested a harder political environment for physical AI build-outs. Anthropic-backed PAC network Public First spent over $63 million and won 10 of 17 targeted congressional races, while local voters across states like Texas, Ohio, and Michigan [backed restrictions on data center tax breaks and grid usage](https://time.com/article/2026/11/04/midterm-elections-results-ai-industry-data-centers/). Power and local zoning are replacing GPU supply as the hardest bottleneck for new training clusters.
+
+---
+
+## OpenAI Owns More of the Builder Stack
+
+### OpenAI acquires Pierre Computer Company to wire Git directly into Codex
+
+On November 4, OpenAI [agreed to acquire Pierre Computer Company](https://openai.com/index/openai-to-acquire-pierre/), the developer-tooling startup behind the Code Storage platform and open-source rendering libraries `Trees`, `Diffs`, and `Highlights`. OpenAI plans to fold Pierre's team and technology into Codex so human engineers and background agents like [Dots](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot) can branch, diff, and review code in the same environment. As [Axios noted](https://www.axios.com/2026/11/04/openai-pierre-computer-github), traditional pull-request queues break down when autonomous agents open dozens of branches an hour, so OpenAI is building its own repo layer rather than waiting on GitHub.
+
+### ChatGPT Images 2.6 ships with Flare and Sunburst API models
+
+OpenAI also rolled out [ChatGPT Images 2.6 on November 4](https://felloai.com/chatgpt-images-2-6/) across ChatGPT, Codex, and the developer API, cutting generation latency by roughly 50%. The API splits into two endpoints: `GPT-Image-2.6 Flare` renders draft assets in about six seconds, while `GPT-Image-2.6 Sunburst` handles high-detail production graphics, SVG vector exports, and region-specific markup edits. Consumer tiers also gained looping animated GIFs and persistent character reference libraries. Front-end builders can now generate and edit clean SVG icons directly through the API without a raster-to-vector conversion step.
+
+---
+
+## Open Weights Outgrow the Single Node
+
+### Moonshot drops 2.8-trillion-parameter Kimi K3.1 Pro weights
+
+Following its late-October preview, Moonshot AI [published the full open weights for Kimi K3.1 Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) on Hugging Face and added managed deployment on Microsoft Foundry. The Mixture-of-Experts model totals 2.8 trillion parameters with 104 billion active per token, a 1-million-token context window, and a native 401M-parameter `MoonViT-V2` vision encoder. Even with quantization-aware MXFP4 weights, the checkpoint takes up 1.56 TB across 96 safetensors shards and needs a 16-GPU floor to run via vLLM. Open weights have caught up to frontier closed coding models, but self-hosting them now requires multi-node orchestration.
+
+### Tencent launches Hy4 with native computer use and 1.25-bit compression
+
+Tencent's Hunyuan team [unveiled Hy4](https://www.scmp.com/tech/big-tech/article/3373227/tencent-unveils-hy4-open-weight-ai-race-deepseek-zai-alibaba-heats), a 770-billion-parameter open-weight MoE model (49B active per token) with a 1-million-token context window and built-in visual GUI control. To make the model easier to deploy than multi-terabyte rivals, Tencent paired the release with its "Sherry" quantization method, which compresses weights down to 1.25 bits alongside standard FP8 checkpoints. If you are building desktop or browser automation agents, test Hy4's native screen-action loop before stitching together separate vision and planning calls.
+
+---
+
+## Verifying What Ran and What Installed
+
+### Anthropic open-sources FlashProve for cryptographic model verification
+
+Anthropic released [FlashProve](https://www.anthropic.com/research/provable-inference), an open-source research prototype that uses zkSNARK zero-knowledge proofs to verify that a specific text response actually came from a declared model weight checkpoint. The system targets a growing problem on third-party inference routers, where providers sometimes silently swap in quantized or cheaper models during peak load. If you route traffic through external aggregators, cryptographic proof of inference is the clearest path to auditing SLA compliance without exposing proprietary weights.
+
+### Backdoored Claude Code extension hits 5,000 developers on third-party marketplaces
+
+Microsoft Threat Intelligence [published a post-mortem](https://www.microsoft.com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/) detailing how compromised builds (`2.1.312` and `2.1.313`) of the `anthropic.claude-code` extension sat on Open VSX and the Cursor Marketplace for 11 hours. Roughly 5,000 developers installed the trojanized update, which ran a 66-line JavaScript loader on startup to harvest environment variable names, Git configs, and host IPs while attempting to inject an attacker SSH key into `~/.ssh/authorized_keys`. Official npm packages and the Visual Studio Marketplace were unaffected. Audit your developer machines for unauthorized `svc-telemetry` SSH keys and disable auto-updates on community extension registries.
+
+---
+
+## Quick Hits
+
+- **OpenAI and Hacktron:** OpenAI [partnered with security firm Hacktron](https://openai.com/index/partnering-with-hacktron/) through its Daybreak Red program to hunt zero-days in third-party software connected to AI agents.
+- **China AI rules:** Regulators in Beijing [enforced mandatory national AI safety standards](https://emergent.sh/news/china-imposes-new-safety-standards-ai-firms) requiring pre-deployment risk audits and strict training data lineage tracking for both domestic and foreign labs.
+- **Microsoft and Lumen:** Expanded a [co-selling partnership](https://news.microsoft.com/source/2026/11/02/lumen-and-microsoft-expand-collaboration-to-co-sell-enterprise-ai-ready-networks/) on November 2 to wire high-capacity private fiber directly into enterprise Azure AI clusters.
+- **Vultr:** Brought a [20-MW AI supercluster online in Chennai](https://aiweekdaily.com/digest/2026-11-02) powered by AMD Instinct GPUs, with plans to scale its global footprint toward 1 GW by 2029.
+- **Google:** Launched the [Skilling Africa with Google hub](https://blog.google/intl/en-africa/unlocking-africas-ai-potential-introducing-skilling-africa-with-google/), committing to train 3 million people in AI and digital skills across the continent by 2030.
+
+---
+
+*This Week in AI is published every Monday by the [Lablab](https://lablab.ai) team.*
